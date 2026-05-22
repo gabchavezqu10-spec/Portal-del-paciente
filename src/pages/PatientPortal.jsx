@@ -23,7 +23,7 @@ export default function PatientPortal() {
   const [expandedHistory, setExpandedHistory] = useState(null);
 
   const DNI_AUTORIZADOS = [
-  "74224576",
+  "12345678",
   "75259841",
   // agrega los DNIs que quieras
   ];
