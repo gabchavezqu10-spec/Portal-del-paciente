@@ -22,8 +22,20 @@ export default function PatientPortal() {
   const [documents, setDocuments] = useState([]);
   const [expandedHistory, setExpandedHistory] = useState(null);
 
+  const DNI_AUTORIZADOS = [
+  "74224576",
+  "75259841",
+  // agrega los DNIs que quieras
+  ];
+
   const handleSearch = async () => {
     if (!dni.trim()) { setError("Por favor ingresa tu DNI"); return; }
+    if (!DNI_AUTORIZADOS.includes(dni.trim())) {
+    setError("No tienes acceso al portal. Contacta a tu centro de salud.");
+    setLoading(false);
+    return;
+   }
+    
     setLoading(true); setError(""); setPatient(null);
     try {
       const clients = await clientApi.filter({ documento: dni.trim() });
